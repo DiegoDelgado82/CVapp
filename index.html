@@ -4,9 +4,81 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <script src="script/cv.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"</script>
+
+  
+
+
     <title>CVapp</title>
 </head>
-<body>
+<body>       
+    <div id="principal" style=" top:0px; left:0px; width: 1000px; height: 1000px; ">
+        
+        <h1 style="position: absolute; top:20px; left: 320px; "> Curriculum Vitae</h1>
+       <!-- <input type="file" multiple="false" accept="image/*" id="x" onchange=loadImage() /> 
+       
+   id="titulo"
+    -->
+    <p id="nombrePersona" style="position: absolute; top:60px; left: 320px; font-size: 3.5rem;" ></p>
+    <p id="telefonoPersona" ></p>
+    <i id="logoLinkedin"class="fa fa-linkedin-square"></i>
+    <p id="linkedinPersona" ></p>
+        
+    <img  id="fondo" src="img/form01.png" alt="" style="position: absolute; top:0px; left: 0px; z-index: -1;"/> 
+    <img id="foto" alt="" style="position: absolute;top:100px;left: 50px;width: 180px;height: 180px;border-radius: 100%;z-index: 2;color:red;" /> 
+      </div>
     
+      
+<section id="datosACargar">
+    <label for="">Foto: </label>
+    <input type="file" id="file-selector"/>
+    <p id="status"></p>
+   <label for="">Apellido y Nombre: </label><input id="nombre" type="text" onkeyup="cargarDatos('nombrePersona', 'nombre')"/><br><br>
+   <label for="">Teléfono: </label> <input id="telefono"type="text" onkeyup="cargarDatos('telefonoPersona', 'telefono')"/>
+   <br><br>
+   <label for="">Linkedin: </label> <input id="linkedin"type="text" onkeyup="cargarDatos('linkedinPersona','linkedin')"/>
+   <button onclick=generarPDF()>Descargar en PDF</button>
+   <input type="range">
+    
+</section>
+        
+    
+
+
+
+      <script>
+        const status = document.getElementById('status');
+        const output = document.getElementById('foto');
+        if (window.FileList && window.File && window.FileReader) {
+          document.getElementById('file-selector').addEventListener('change', event => {
+            output.src = '';
+            status.textContent = '';
+            const file = event.target.files[0];
+            if (!file.type) {
+              status.textContent = 'Error: The File.type property does not appear to be supported on this browser.';
+              return;
+            }
+            if (!file.type.match('image.*')) {
+              status.textContent = 'Error: The selected file does not appear to be an image.'
+              return;
+            }
+            const reader = new FileReader();
+            reader.addEventListener('load', event => {
+              output.src = event.target.result;
+            });
+            reader.readAsDataURL(file);
+          }); 
+        }
+      </script>
+
+
+
 </body>
 </html>

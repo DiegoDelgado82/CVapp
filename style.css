@@ -1,0 +1,50 @@
+
+
+
+  #titulo
+  {
+    position: absolute;
+    top:20px;
+    left: 300px;
+  
+  }
+
+
+
+  #datosACargar
+  {
+    position: absolute;
+    top: 30px;
+    left: 900px;
+    border-color: red;
+    border-width: 2px;
+    z-index: 5;
+    color:black;
+    border-style: solid;
+    padding: 15px 10px 10px 15px;
+  }
+
+  #telefonoPersona
+  {
+    position: absolute;
+    top:270px; 
+    left: 90px; 
+    font-size: 1.3rem;
+  }
+
+  #linkedinPersona
+  {
+    position: absolute;
+    top:300px; 
+    left: 90px; 
+    font-size: 1.3rem;
+  }
+
+  #logoLinkedin
+  {
+    position: absolute;
+    top:323px; 
+    left: 70px; 
+    font-size: 1.3rem;
+  }
+
